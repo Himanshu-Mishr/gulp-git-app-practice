@@ -26,7 +26,7 @@ gulp.task('git-add', function(){
 
 gulp.task('git-commit', function(){
 	return gulp.src('./*')
-		.pipe(git.commit('initial commit', {args: '-m'}));
+		.pipe(git.commit('initial commit', {args: '-m', emitData:true}));
 });
 
 // git status
