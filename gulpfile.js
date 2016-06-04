@@ -33,7 +33,7 @@ gulp.task('git-commit', function(){
 
 // git add remote
 gulp.task('git-add-remote', function(){
-	git.addRemote('origin', 'https://github.com/Himanshu-Mishr/gulp-git-app-practice.git', function(err){
+	git.addRemote('origin', 'git@github.com:Himanshu-Mishr/gulp-git-app-practice.git', function(err){
 			if(err) throw err;
 	});
 });
@@ -59,6 +59,7 @@ gulp.task('git-pull', function(){
 	});
 });
 
+
 // git status
 gulp.task('git-status', function(){
 	git.status({/*args*/}, function(err){
@@ -76,7 +77,7 @@ gulp.task('git-log', function(){
 
 // default task
 gulp.task('default', function(){
-	runSequence('git-init', 'git-add', 'git-commit');
+	runSequence('git-add', 'git-commit', 'git-push', 'git-pull');
 });
 
 
