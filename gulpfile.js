@@ -16,6 +16,7 @@ gulp.task('git-init', function(){
 	})
 });
 
+// git add
 gulp.task('git-add', function(){
 	return gulp.src('./*')
 		.pipe(git.add({args: '--all'}, function(err){
@@ -24,9 +25,38 @@ gulp.task('git-add', function(){
 		));
 });
 
+// git commit -m 'message'
 gulp.task('git-commit', function(){
 	return gulp.src('./*')
 		.pipe(git.commit('initial commit', {args: '-m', emitData:true}));
+});
+
+// git add remote
+gulp.task('git-add-remote', function(){
+	git.addRemote('origin', 'https://github.com/Himanshu-Mishr/gulp-git-app-practice.git', function(err){
+			if(err) throw err;
+	});
+});
+
+// git remove remote
+gulp.task('git-remove-remote', function(){
+	git.removeRemote('origin', function(err){
+		if(err) throw err;
+	});
+});
+
+// git push
+gulp.task('git-push', function(){
+	git.push('origin', 'master', {emitData:true}, function(err){
+		if(err) throw err;
+	});
+});
+
+// git pull
+gulp.task('git-pull', function(){
+	git.pull('origin', 'master', {/*args*/}, function(err){
+		if(err) throw err;
+	});
 });
 
 // git status
