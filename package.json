@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "gulp-git": "^1.7.2"
+    "gulp-git": "^1.7.2",
+    "gulp-git-watch": "^0.1.0"
   }
 }

@@ -7,7 +7,8 @@ var runSequence = require('run-sequence');
 // required for git related operation
 var git =  require('gulp-git');
 
-
+// required for git watcher
+var gitWatch = require('gulp-git-watch');
 
 // git init
 gulp.task('git-init', function(){
@@ -74,18 +75,20 @@ gulp.task('git-log', function(){
 	});
 });
 
+gulp.task('git-watch', function() {
+	gitWatch()
+		.on('check', function() {
+			console.log('CHECK!');
+		})
+		.on('change', function(newHash, oldHash) {
+			console.log('CHANGES! FROM', oldHash, '->', newHash);
+		});
+});
 
 // default task
 gulp.task('default', function(){
 	runSequence('git-add', 'git-commit', 'git-push', 'git-pull');
 });
-
-
-
-
-
-
-
 
 
 
